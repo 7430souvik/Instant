@@ -5,6 +5,8 @@ import Signin from './pages/Signin';
 import SignUp from './pages/Signup';
 import { AuthProvider } from './context/AuthContext';
 import VideoMeetComponent from './pages/VideoMeet';
+import Home from './pages/home';
+import History from './pages/history';
 
 
 function App() {
@@ -23,6 +25,9 @@ function App() {
 
 
           <Route path='/signup' element={<SignUp/>}/>
+          <Route path='/home' element={<Home/>}/>
+
+          <Route path='/history' element={<History/>}/>
 
           <Route path='/:url' element={<VideoMeetComponent/>}/>
         </Routes>

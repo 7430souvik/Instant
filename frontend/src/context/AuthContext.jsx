@@ -2,6 +2,7 @@ import { createContext, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 export const AuthContext = createContext(null);
 
 const client = axios.create({
@@ -77,9 +78,39 @@ export const AuthProvider = ({ children }) => {
     navigate("/signin");
   };
 
+  const getHistoryOfUser = async()=>{
+    try{
+      let request = await client.get("/get_all_activity",{
+        params: {
+          token: localStorage.getItem("token")
+        }
+      });
+      return request.data
+
+    }catch(err){
+      throw err;
+    }
+  }
+
+  const addToUserHistory = async(meetingCode) =>{
+    try{
+      let request = await client.post("/add_to_activity",{
+        token:localStorage.getItem("token"),
+        meetingCode: meetingCode
+      });
+
+      return request
+
+    }catch(e){
+      throw e;
+    }
+  }
+
   const data = {
     userData,
     setUserData,
+    getHistoryOfUser,
+    addToUserHistory,
 
     loading,
 
