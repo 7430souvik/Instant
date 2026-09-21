@@ -65,7 +65,7 @@ function HomeComponent() {
 
             </div>
             <div className='rightPanel'>
-                <img srcSet='/home.png' alt=''/>
+                <img srcSet='public/home.png' alt=''/>
 
             </div>
 
